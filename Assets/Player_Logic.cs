@@ -26,9 +26,7 @@ public class Player_Logic : MonoBehaviour
 
     void FixedUpdate()
     {
-        /*Old Input System
-        rb.AddForce(moveInput);
-        */
+        rb.AddForce(new Vector3(moveInput.x, 0, moveInput.y) * moveSpeed, ForceMode.Acceleration);
     }
 
     //New Input System (Invoke Unity Events)
@@ -45,7 +43,7 @@ public class Player_Logic : MonoBehaviour
     }*/
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        
-        
+        Vector2 v = ctx.ReadValue<Vector2>();
+        moveInput = v; 
     }
 }

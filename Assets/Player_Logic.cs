@@ -26,7 +26,7 @@ public class Player_Logic : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.AddForce(new Vector3(moveInput.x, 0, moveInput.y) * moveSpeed, ForceMode.Acceleration);
+        rb.AddForce(new Vector3 (moveInput.x, 0, moveInput.y) * moveSpeed, ForceMode.Acceleration);
     }
 
     //New Input System (Invoke Unity Events)

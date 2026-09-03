@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+//Note to self: Physics.gravity messes with gravity! It's a vector3 you can mess with in the Physics settings
 public class Player_Logic : MonoBehaviour
 {
     [SerializeField] private int moveSpeed;

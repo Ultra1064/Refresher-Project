@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class Door : MonoBehaviour
+//This was my initial attempt at coding a door. (It sucks, so it's been renamed to BrokenDoor, as it doesn't work)
+public class BrokenDoor: MonoBehaviour
 {
     [SerializeField] private Transform door;
     private Vector3 startPosition;
@@ -43,10 +42,10 @@ public class Door : MonoBehaviour
             else
             { //This opens the door
                 opened = false;
-                currentPosition.x -= Time.deltaTime;
-                currentPosition.z -= Time.deltaTime;
+                currentPosition.x -= Time.deltaTime * 50;
+                currentPosition.z -= Time.deltaTime * 50;
                 door.localPosition = currentPosition;
-                currentRotation.y -= Time.deltaTime;
+                currentRotation.y -= Time.deltaTime * 50;
                 door.localEulerAngles = currentRotation;
             }
         }
@@ -64,22 +63,22 @@ public class Door : MonoBehaviour
             else
             { //This closes the door
                 closed = false;
-                currentPosition.x += Time.deltaTime;
-                currentPosition.z += Time.deltaTime;
+                currentPosition.x += Time.deltaTime * 50;
+                currentPosition.z += Time.deltaTime * 50;
                 door.localPosition = currentPosition;
-                currentRotation.y += Time.deltaTime;
+                currentRotation.y += Time.deltaTime * 50;
                 door.localEulerAngles = currentRotation;
             }
         }
     }
 
-    void OnEntered() //The Unity event isn't hooked up yet :(
+    private void OnTriggerEnter() //The Unity event isn't hooked up yet :(
     {
         Debug.Log("Entered!");
         opening = true;
     }
 
-    void OnExited()
+    void OnTriggerExit()
     {
         Debug.Log("Exited!");
         opening = false;
